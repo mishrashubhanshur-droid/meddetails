@@ -31,25 +31,203 @@ interface DrugResult {
   storage: string;
 }
 
-const medicineCategories = [
-  { name: 'Pain Relief', drugs: ['Paracetamol', 'Ibuprofen', 'Aspirin', 'Diclofenac', 'Naproxen'] },
-  { name: 'Antibiotics', drugs: ['Amoxicillin', 'Azithromycin', 'Ciprofloxacin', 'Doxycycline', 'Metronidazole'] },
-  { name: 'Diabetes', drugs: ['Metformin', 'Glimepiride', 'Gliclazide', 'Insulin', 'Sitagliptin'] },
-  { name: 'Blood Pressure', drugs: ['Amlodipine', 'Losartan', 'Atenolol', 'Enalapril', 'Hydrochlorothiazide'] },
-  { name: 'Gastric', drugs: ['Omeprazole', 'Pantoprazole', 'Ranitidine', 'Esomeprazole', 'Domperidone'] },
-  { name: 'Allergy', drugs: ['Cetirizine', 'Loratadine', 'Levocetirizine', 'Fexofenadine', 'Montelukast'] },
-  { name: 'Vitamins', drugs: ['Vitamin D', 'Vitamin B12', 'Vitamin C', 'Calcium', 'Iron'] },
-  { name: 'Antifungal', drugs: ['Fluconazole', 'Terbinafine', 'Ketoconazole', 'Clotrimazole'] },
+interface Condition {
+  name: string;
+  icon: string;
+  description: string;
+  symptoms: string[];
+  medicines: { name: string; generic: string; dosage: string; type: string }[];
+  homeRemedies: string[];
+  whenToSeeDoctor: string;
+}
+
+const conditions: Condition[] = [
+  {
+    name: 'Headache',
+    icon: '🤕',
+    description: 'Pain or discomfort in the head, scalp, or neck area. Can be tension-type, migraine, or cluster headache.',
+    symptoms: ['Throbbing pain', 'Sensitivity to light', 'Nausea', 'Neck stiffness', 'Blurred vision'],
+    medicines: [
+      { name: 'Paracetamol (Crocin/Dolo)', generic: 'Paracetamol 500mg', dosage: '500mg-1000mg every 4-6 hours. Max 4g/day.', type: 'Pain Reliever' },
+      { name: 'Ibuprofen (Brufen/Micromax)', generic: 'Ibuprofen 400mg', dosage: '400mg every 6-8 hours with food. Max 1200mg/day.', type: 'NSAID' },
+      { name: 'Combiflam', generic: 'Ibuprofen + Paracetamol', dosage: '1 tablet after food, 2-3 times/day.', type: 'Combo Pain Reliever' },
+      { name: 'Saridon', generic: 'Paracetamol + Propyphenazone + Caffeine', dosage: '1 tablet, max 3/day.', type: 'Analgesic' },
+      { name: 'Decstasy', generic: 'Paracetamol + Caffeine', dosage: '1-2 tablets every 4-6 hours.', type: 'Pain Reliever' },
+    ],
+    homeRemedies: ['Cold compress on forehead', 'Rest in dark room', 'Stay hydrated', 'Peppermint oil on temples', 'Deep breathing exercises'],
+    whenToSeeDoctor: 'If headache is sudden and severe, lasts >3 days,伴随 fever/stiff neck/vision changes, or occurs after head injury.'
+  },
+  {
+    name: 'Stomach Pain',
+    icon: '🤢',
+    description: 'Discomfort or cramps in the abdominal area. Can be due to gas, acidity, indigestion, food poisoning, or infections.',
+    symptoms: ['Cramping', 'Bloating', 'Gas', 'Nausea', 'Heartburn', 'Loose motions'],
+    medicines: [
+      { name: 'Digene Gel', generic: 'Mag Hydroxide + Simethicone + Al(OH)', dosage: '2 spoons after meals, 3-4 times/day.', type: 'Antacid + Anti-gas' },
+      { name: 'Pan-D', generic: 'Pantoprazole + Domperidone', dosage: '1 tablet before breakfast, 30 min before food.', type: 'PPI + Prokinetic' },
+      { name: 'Omez DSR', generic: 'Omeprazole + Domperidone', dosage: '1 capsule before breakfast.', type: 'PPI + Prokinetic' },
+      { name: 'Rantac-D', generic: 'Ranitidine + Domperidone', dosage: '1 tablet before meals, 2 times/day.', type: 'H2 Blocker + Prokinetic' },
+      { name: 'Enterogermina', generic: 'Clostridium butyricum', dosage: '2-3 vials/day, shake before use.', type: 'Probiotic' },
+      { name: 'Spasmo-Proxyvon', generic: 'Dicyclomine + Paracetamol', dosage: '1 tablet after food, 2-3 times/day.', type: 'Antispasmodic' },
+    ],
+    homeRemedies: ['ORS water', 'Ginger tea', 'Warm water sips', 'Avoid spicy food', 'Light khichdi/dal rice', 'Ajwain water'],
+    whenToSeeDoctor: 'If pain is severe, blood in stool, vomiting blood, fever >101°F, or pain lasts >2 days.'
+  },
+  {
+    name: 'Fever',
+    icon: '🌡️',
+    description: 'Body temperature above 98.6°F (37°C). Can be due to viral, bacterial, or other infections.',
+    symptoms: ['High temperature', 'Body ache', 'Chills', 'Sweating', 'Weakness', 'Headache'],
+    medicines: [
+      { name: 'Paracetamol (Crocin/Dolo)', generic: 'Paracetamol 500mg', dosage: '500mg-1000mg every 4-6 hours. Max 4g/day.', type: 'Antipyretic' },
+      { name: 'Dolo 650', generic: 'Paracetamol 650mg', dosage: '650mg every 4-6 hours. Max 4g/day.', type: 'Antipyretic' },
+      { name: 'Ibuprofen (Brufen)', generic: 'Ibuprofen 400mg', dosage: '400mg every 6-8 hours with food.', type: 'NSAID + Antipyretic' },
+      { name: 'Crocin Advance', generic: 'Paracetamol 500mg', dosage: '1-2 tablets every 4-6 hours.', type: 'Antipyretic' },
+      { name: 'Fervex', generic: 'Paracetamol + Pheniramine + Vit C', dosage: '1 sachet in warm water, 3 times/day.', type: 'Cold & Fever Combo' },
+    ],
+    homeRemedies: ['Lukewarm sponging', 'ORS water', 'Light cotton clothes', 'Rest', 'Coconut water', 'Neem leaves water'],
+    whenToSeeDoctor: 'If fever >103°F, lasts >3 days,伴随 rash/severe headache/difficulty breathing, or in children <2 years.'
+  },
+  {
+    name: 'Cold & Cough',
+    icon: '🤧',
+    description: 'Common cold is a viral infection of the upper respiratory tract. Cough can be dry or with mucus.',
+    symptoms: ['Runny nose', 'Sneezing', 'Sore throat', 'Cough', 'Mild fever', 'Congestion'],
+    medicines: [
+      { name: 'Cetirizine (Zyrtec/Alerid)', generic: 'Cetirizine 10mg', dosage: '10mg once daily at night.', type: 'Antihistamine' },
+      { name: 'Montair LC', generic: 'Montelukast + Levocetirizine', dosage: '1 tablet at night.', type: 'Anti-allergy' },
+      { name: 'Ascoril D+', generic: 'Dextromethorphan + Phenylephrine + Chlorpheniramine', dosage: '10ml 3-4 times/day.', type: 'Cough Syrup' },
+      { name: 'Benadryl', generic: 'Diphenhydramine + Ammonium Chloride', dosage: '2 spoons 3-4 times/day.', type: 'Cough Syrup' },
+      { name: 'Dexorange', generic: 'Iron + Folic Acid + Vit B12', dosage: '10ml daily on empty stomach.', type: 'Syrup for weakness' },
+      { name: 'Sinarest', generic: 'Paracetamol + Phenylephrine + Caffeine', dosage: '1 tablet every 4-6 hours.', type: 'Cold Relief' },
+    ],
+    homeRemedies: ['Honey + ginger tea', 'Steam inhalation', 'Salt water gargle', 'Turmeric milk (haldi doodh)', 'Tulsi water', 'Warm soups'],
+    whenToSeeDoctor: 'If cough lasts >2 weeks, blood in sputum, breathing difficulty, or high fever.'
+  },
+  {
+    name: 'Diarrhea',
+    icon: '💧',
+    description: 'Loose, watery stools occurring more frequently than usual. Can be due to infection, food intolerance, or medication.',
+    symptoms: ['Loose motions', 'Dehydration', 'Cramps', 'Nausea', 'Fever', 'Bloating'],
+    medicines: [
+      { name: 'ORS', generic: 'Oral Rehydration Salts', dosage: '1 sachet in 1 liter water. Sip frequently.', type: 'Rehydration' },
+      { name: 'Lomotil', generic: 'Diphenoxylate + Atropine', dosage: '1-2 tablets after each loose stool. Max 8/day.', type: 'Antidiarrheal' },
+      { name: 'Metronidazole (Flagyl)', generic: 'Metronidazole 400mg', dosage: '400mg 3 times/day for 5-7 days.', type: 'Antibiotic (if infection)' },
+      { name: 'Enterogermina', generic: 'Clostridium butyricum', dosage: '2-3 vials/day.', type: 'Probiotic' },
+      { name: 'Smecta', generic: 'Diosmectite', dosage: '1 sachet 3 times/day in water.', type: 'Adsorbent' },
+      { name: 'Zinc tablets', generic: 'Zinc 20mg', dosage: '1 tablet daily for 10-14 days.', type: 'Supplement' },
+    ],
+    homeRemedies: ['ORS water frequently', 'Banana + curd', 'Rice kanji', 'Avoid dairy', 'Coconut water', 'Light khichdi'],
+    whenToSeeDoctor: 'If diarrhea lasts >3 days, blood in stool, severe dehydration, or high fever.'
+  },
+  {
+    name: 'Allergy',
+    icon: '🤧',
+    description: 'Immune system reaction to a substance. Can be seasonal, food-based, or drug-induced.',
+    symptoms: ['Sneezing', 'Itchy eyes', 'Runny nose', 'Skin rash', 'Hives', 'Swelling'],
+    medicines: [
+      { name: 'Cetirizine (Zyrtec)', generic: 'Cetirizine 10mg', dosage: '10mg once daily.', type: 'Antihistamine' },
+      { name: 'Levocetirizine (Xyzal)', generic: 'Levocetirizine 5mg', dosage: '5mg once daily at night.', type: 'Antihistamine' },
+      { name: 'Montair LC', generic: 'Montelukast + Levocetirizine', dosage: '1 tablet at night.', type: 'Anti-allergy' },
+      { name: 'Allegra', generic: 'Fexofenadine 120mg', dosage: '120mg once daily.', type: 'Non-drowsy Antihistamine' },
+      { name: 'Deriphyllin', generic: 'Etophylline + Theophylline', dosage: '1 tablet 2-3 times/day.', type: 'Bronchodilator' },
+    ],
+    homeRemedies: ['Avoid allergen', 'Nasal saline wash', 'Cold compress on itchy eyes', 'Local honey', 'Steam inhalation'],
+    whenToSeeDoctor: 'If breathing difficulty, face/throat swelling, severe rash, or symptoms don\'t improve with medicines.'
+  },
+  {
+    name: 'Body Pain',
+    icon: '💪',
+    description: 'Pain in muscles, joints, or bones. Can be due to physical activity, injury, arthritis, or viral infections.',
+    symptoms: ['Muscle ache', 'Joint pain', 'Stiffness', 'Swelling', 'Limited movement'],
+    medicines: [
+      { name: 'Ibuprofen (Brufen)', generic: 'Ibuprofen 400mg', dosage: '400mg every 6-8 hours with food.', type: 'NSAID' },
+      { name: 'Diclofenac (Voltaren)', generic: 'Diclofenac 50mg', dosage: '50mg 2-3 times/day after food.', type: 'NSAID' },
+      { name: 'Combiflam', generic: 'Ibuprofen + Paracetamol', dosage: '1 tablet after food, 2-3 times/day.', type: 'Combo' },
+      { name: 'Volini Gel', generic: 'Diclofenac + Linseed Oil', dosage: 'Apply locally 3-4 times/day.', type: 'Topical Gel' },
+      { name: 'Thiocolchicoside (Celin)', generic: 'Thiocolchicoside 4mg', dosage: '4mg 2 times/day.', type: 'Muscle Relaxant' },
+      { name: 'Pan 40', generic: 'Pantoprazole 40mg', dosage: '40mg before breakfast (if taking NSAIDs).', type: 'Stomach Protection' },
+    ],
+    homeRemedies: ['Hot water bag', 'Gentle stretching', 'Rest', 'Epsom salt bath', 'Massage with warm oil'],
+    whenToSeeDoctor: 'If pain is severe, swelling is significant, can\'t move joint, or pain lasts >1 week.'
+  },
+  {
+    name: 'Vomiting',
+    icon: '🤮',
+    description: 'Forceful expulsion of stomach contents. Can be due to food poisoning, infection, motion sickness, or pregnancy.',
+    symptoms: ['Nausea', 'Vomiting', 'Dizziness', 'Sweating', 'Dehydration'],
+    medicines: [
+      { name: 'Emeset (Ondansetron)', generic: 'Ondansetron 4mg', dosage: '4mg every 8 hours. Dissolve on tongue.', type: 'Anti-emetic' },
+      { name: 'Domperidone (Domstal)', generic: 'Domperidone 10mg', dosage: '10mg 3 times/day before food.', type: 'Prokinetic' },
+      { name: 'Vomikind', generic: 'Ondansetron 4mg', dosage: '4mg every 8 hours.', type: 'Anti-emetic' },
+      { name: 'Digene Gel', generic: 'Mag Hydroxide + Simethicone', dosage: '2 spoons after vomiting episode.', type: 'Antacid' },
+    ],
+    homeRemedies: ['ORS sips', 'Cold water sips', 'Ginger tea', 'Avoid solid food for few hours', 'BRAT diet (Banana, Rice, Apple, Toast)'],
+    whenToSeeDoctor: 'If vomiting blood, severe dehydration, lasts >24 hours, or伴随 high fever/severe headache.'
+  },
+  {
+    name: 'Skin Problems',
+    icon: '🩹',
+    description: 'Includes rashes, acne, fungal infections, eczema, and other skin conditions.',
+    symptoms: ['Rash', 'Itching', 'Redness', 'Bumps', 'Dry patches', 'Blisters'],
+    medicines: [
+      { name: 'Candid Cream', generic: 'Clotrimazole', dosage: 'Apply thin layer 2-3 times/day for 2-4 weeks.', type: 'Antifungal' },
+      { name: 'Betnovate-C', generic: 'Betamethasone + Clotrimazole', dosage: 'Apply thin layer 1-2 times/day for 1-2 weeks.', type: 'Steroid + Antifungal' },
+      { name: 'Permet', generic: 'Permethrin 5%', dosage: 'Apply to whole body, wash after 8-12 hours (for scabies).', type: 'Antiparasitic' },
+      { name: 'Azithral 500', generic: 'Azithromycin 500mg', dosage: '500mg once daily for 3 days (for infected skin).', type: 'Antibiotic' },
+      { name: 'Sofi gel', generic: 'Aloe vera + Vitamin E', dosage: 'Apply 2-3 times daily.', type: 'Soothing gel' },
+    ],
+    homeRemedies: ['Neem leaves paste', 'Aloe vera gel', 'Coconut oil', 'Keep area clean and dry', 'Avoid scratching'],
+    whenToSeeDoctor: 'If rash spreads rapidly, has pus/blisters,伴随 fever, or doesn\'t improve in 1 week.'
+  },
+  {
+    name: 'Joint Pain / Arthritis',
+    icon: '🦴',
+    description: 'Pain and inflammation in one or more joints. Common in knees, hips, hands, and spine.',
+    symptoms: ['Joint stiffness', 'Swelling', 'Reduced range of motion', 'Morning stiffness', 'Creaking sound'],
+    medicines: [
+      { name: 'Diclofenac (Voltaren)', generic: 'Diclofenac 50mg', dosage: '50mg 2-3 times/day after food.', type: 'NSAID' },
+      { name: 'Aceclofenac (Aceproxyvon)', generic: 'Aceclofenac 100mg', dosage: '100mg twice daily after food.', type: 'NSAID' },
+      { name: 'Rantac-D', generic: 'Ranitidine + Domperidone', dosage: '1 tablet before meals (stomach protection).', type: 'PPI' },
+      { name: 'Glucosamine', generic: 'Glucosamine + Chondroitin', dosage: '1 tablet 3 times/day.', type: 'Cartilage Support' },
+      { name: 'Volini Gel', generic: 'Diclofenac + Linseed Oil', dosage: 'Apply locally 3-4 times/day.', type: 'Topical' },
+      { name: 'Thiocolchicoside', generic: 'Thiocolchicoside 4mg', dosage: '4mg 2 times/day (for muscle spasm).', type: 'Muscle Relaxant' },
+    ],
+    homeRemedies: ['Hot water bag', 'Gentle exercise', 'Weight management', 'Fish oil supplements', 'Turmeric milk'],
+    whenToSeeDoctor: 'If joint is red/hot, severe swelling, fever, or pain limits daily activities.'
+  },
+  {
+    name: 'Acidity / Heartburn',
+    icon: '🔥',
+    description: 'Burning sensation in chest due to acid reflux from stomach to esophagus. Common after spicy food.',
+    symptoms: ['Burning in chest', 'Sour taste in mouth', 'Bloating', 'Nausea', 'Difficulty swallowing'],
+    medicines: [
+      { name: 'Digene Gel', generic: 'Mag Hydroxide + Simethicone + Al(OH)', dosage: '2 spoons after meals, 3-4 times/day.', type: 'Antacid' },
+      { name: 'Pantop 40', generic: 'Pantoprazole 40mg', dosage: '40mg before breakfast for 2-4 weeks.', type: 'PPI' },
+      { name: 'Omez 20', generic: 'Omeprazole 20mg', dosage: '20mg before breakfast.', type: 'PPI' },
+      { name: 'Rantac 150', generic: 'Ranitidine 150mg', dosage: '150mg before bed.', type: 'H2 Blocker' },
+      { name: 'Pan-D', generic: 'Pantoprazole + Domperidone', dosage: '1 tablet before breakfast.', type: 'PPI + Prokinetic' },
+    ],
+    homeRemedies: ['Avoid spicy food', 'Don\'t lie down after eating', 'Elevate head while sleeping', 'Cold milk', 'Jeera water', 'Banana'],
+    whenToSeeDoctor: 'If symptoms persist >2 weeks, difficulty swallowing, weight loss, or black stools.'
+  },
+  {
+    name: 'Anxiety / Stress',
+    icon: '😰',
+    description: 'Feeling of worry, nervousness, or unease. Can be generalized or situational.',
+    symptoms: ['Restlessness', 'Racing thoughts', 'Insomnia', 'Muscle tension', 'Rapid heartbeat', 'Sweating'],
+    medicines: [
+      { name: 'Serta 50', generic: 'Sertraline 50mg', dosage: '50mg once daily (prescription needed).', type: 'SSRI Antidepressant' },
+      { name: 'Etizola', generic: 'Etizolam 0.5mg', dosage: '0.5mg 2-3 times/day (short term only).', type: 'Anxiolytic' },
+      { name: 'Buspirone', generic: 'Buspirone 5mg', dosage: '5mg 3 times/day.', type: 'Non-benzodiazepine' },
+    ],
+    homeRemedies: ['Deep breathing exercises', 'Meditation', 'Regular exercise', 'Limit caffeine', 'Ashwagandha', 'Chamomile tea', 'Adequate sleep'],
+    whenToSeeDoctor: 'If anxiety interferes with daily life, panic attacks, suicidal thoughts, or substance abuse.'
+  },
 ];
 
-const popularDrugs = [
-  'Paracetamol', 'Amoxicillin', 'Metformin', 'Omeprazole', 'Cetirizine',
-  'Azithromycin', 'Ibuprofen', 'Amlodipine', 'Pantoprazole', 'Losartan',
-  'Dolo 650', 'Crocin', 'Dolo', 'Combiflam', 'Azee', 'Augmentin',
-  'Gudcef CV', 'Pan D', 'Rantac', 'Montair LC', 'Telekast F',
-  'Glycomet GP', 'Glycomet', 'Stamlo', 'Telma', 'Telma H',
-  'Shelcal 500', 'Neurobion', 'Becosules', 'Supradyn', 'Revital',
-];
+const allConditions = conditions.map(c => c.name.toLowerCase());
+const allSymptoms = Array.from(new Set(conditions.flatMap(c => c.symptoms.map(s => s.toLowerCase()))));
 
 export default function MedicineSearch() {
   const [query, setQuery] = useState('');
@@ -57,8 +235,9 @@ export default function MedicineSearch() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [selectedDrug, setSelectedDrug] = useState<DrugResult | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCondition, setSelectedCondition] = useState<Condition | null>(null);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [searchTab, setSearchTab] = useState<'conditions' | 'fda'>('conditions');
 
   const mapDrug = (r: any): DrugResult => ({
     brand_name: r.openfda?.brand_name?.[0] || 'N/A',
@@ -88,27 +267,45 @@ export default function MedicineSearch() {
     storage: r.storage_and_handling?.[0] || 'Store at room temperature.',
   });
 
-  const searchMedicine = async (q?: string) => {
-    const searchTerm = q || query;
-    if (!searchTerm.trim()) return;
+  const searchConditions = (q: string): Condition[] => {
+    const lower = q.toLowerCase().trim();
+    if (!lower) return [];
+    return conditions.filter(c =>
+      c.name.toLowerCase().includes(lower) ||
+      c.symptoms.some(s => s.toLowerCase().includes(lower)) ||
+      c.medicines.some(m => m.name.toLowerCase().includes(lower) || m.generic.toLowerCase().includes(lower))
+    );
+  };
+
+  const handleSearch = async () => {
+    const q = query.trim();
+    if (!q) return;
+
+    const matchedConditions = searchConditions(q);
+    if (matchedConditions.length > 0) {
+      setSelectedCondition(matchedConditions[0]);
+      setResults([]);
+      setError('');
+      return;
+    }
+
+    setSelectedCondition(null);
     setLoading(true);
     setError('');
-    setResults([]);
-    setSelectedDrug(null);
 
     try {
       const res = await fetch(
-        `https://api.fda.gov/drug/label.json?search=openfda.brand_name:${encodeURIComponent(searchTerm)}&limit=5`
+        `https://api.fda.gov/drug/label.json?search=openfda.brand_name:${encodeURIComponent(q)}&limit=5`
       );
       const data = await res.json();
 
       if (data.error) {
         const res2 = await fetch(
-          `https://api.fda.gov/drug/label.json?search=openfda.generic_name:${encodeURIComponent(searchTerm)}&limit=5`
+          `https://api.fda.gov/drug/label.json?search=openfda.generic_name:${encodeURIComponent(q)}&limit=5`
         );
         const data2 = await res2.json();
         if (data2.error) {
-          setError(`No results found for "${searchTerm}". Try a different name — e.g. Paracetamol, Amoxicillin, Dolo.`);
+          setError(`No results found for "${q}". Try: headache, stomach pain, fever, cold, or medicine names like Paracetamol.`);
         } else {
           setResults(data2.results.map(mapDrug));
         }
@@ -116,7 +313,7 @@ export default function MedicineSearch() {
         setResults(data.results.map(mapDrug));
       }
     } catch {
-      setError('Failed to fetch data. Please check your internet connection.');
+      setError('Failed to fetch data. Check your internet connection.');
     }
     setLoading(false);
   };
@@ -135,64 +332,123 @@ export default function MedicineSearch() {
       <div className={styles.sectionHead}>
         <div>
           <span className={styles.entryNo}>Entry no. 006 — Medicine Lookup</span>
-          <h2 className={styles.h2}>Search any medicine, powered by FDA data.</h2>
+          <h2 className={styles.h2}>Search diseases, symptoms, or medicines.</h2>
         </div>
-        <p>Look up drug information, dosage, side effects, interactions, and manufacturer details from the US FDA open database — free and instant.</p>
+        <p>Type your problem in plain language — like "headache", "stomach pain", "fever" — and get instant medicine suggestions with dosage. Or search any drug on the FDA database.</p>
+      </div>
+
+      <div className={styles.searchTabs}>
+        <button className={`${styles.searchTab} ${searchTab === 'conditions' ? styles.searchTabActive : ''}`} onClick={() => setSearchTab('conditions')}>
+          🩺 Diseases &amp; Symptoms
+        </button>
+        <button className={`${styles.searchTab} ${searchTab === 'fda' ? styles.searchTabActive : ''}`} onClick={() => setSearchTab('fda')}>
+          💊 Search Any Drug (FDA)
+        </button>
       </div>
 
       <div className={styles.searchBox}>
         <input
           type="text"
-          placeholder="Search medicine — e.g. Paracetamol, Amoxicillin, Dolo 650, Combiflam..."
+          placeholder={searchTab === 'conditions' ? 'Type your problem — headache, stomach pain, fever, cold, allergy...' : 'Search any medicine — Paracetamol, Amoxicillin, Dolo 650...'}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && searchMedicine()}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
         />
-        <button className={`${styles.btn} ${styles.btnPrimary}`} onClick={() => searchMedicine()} disabled={loading}>
+        <button className={`${styles.btn} ${styles.btnPrimary}`} onClick={handleSearch} disabled={loading}>
           {loading ? 'Searching...' : 'Search'}
         </button>
       </div>
 
-      {error && <div className={styles.error}>{error}</div>}
-
-      <div className={styles.categories}>
-        <span className={styles.catLabel}>Categories:</span>
-        <div className={styles.catTags}>
-          {medicineCategories.map(cat => (
-            <button
-              key={cat.name}
-              className={`${styles.catTag} ${selectedCategory === cat.name ? styles.catTagActive : ''}`}
-              onClick={() => setSelectedCategory(selectedCategory === cat.name ? '' : cat.name)}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {selectedCategory && (
-        <div className={styles.categoryDrugs}>
-          <span className={styles.catDrugsLabel}>{selectedCategory}:</span>
-          <div className={styles.popularDrugs}>
-            {medicineCategories.find(c => c.name === selectedCategory)?.drugs.map(d => (
-              <button key={d} className={styles.popularBtn} onClick={() => { setQuery(d); searchMedicine(d); setSelectedCategory(''); }}>{d}</button>
+      {searchTab === 'conditions' && !selectedCondition && (
+        <div className={styles.quickConditions}>
+          <span className={styles.quickLabel}>Quick access:</span>
+          <div className={styles.quickGrid}>
+            {conditions.map(c => (
+              <button key={c.name} className={styles.quickCard} onClick={() => { setSelectedCondition(c); setQuery(c.name); }}>
+                <span className={styles.quickIcon}>{c.icon}</span>
+                <span className={styles.quickName}>{c.name}</span>
+              </button>
             ))}
           </div>
         </div>
       )}
 
-      <div className={styles.popular}>
-        <span className={styles.popularLabel}>Popular in India:</span>
-        <div className={styles.popularDrugs}>
-          {popularDrugs.map((p) => (
-            <button key={p} className={styles.popularBtn} onClick={() => { setQuery(p); searchMedicine(p); }}>{p}</button>
+      {error && <div className={styles.error}>{error}</div>}
+
+      {selectedCondition && (
+        <div className={styles.conditionDetail}>
+          <button className={styles.backBtn} onClick={() => { setSelectedCondition(null); setQuery(''); }}>← Back</button>
+          <div className={styles.conditionHeader}>
+            <span className={styles.conditionIcon}>{selectedCondition.icon}</span>
+            <div>
+              <h3>{selectedCondition.name}</h3>
+              <p>{selectedCondition.description}</p>
+            </div>
+          </div>
+
+          <div className={styles.conditionSection}>
+            <h4>Common Symptoms</h4>
+            <div className={styles.symptomTags}>
+              {selectedCondition.symptoms.map(s => (
+                <span key={s} className={styles.symptomTag}>{s}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.conditionSection}>
+            <h4>Recommended Medicines</h4>
+            <div className={styles.medicineCards}>
+              {selectedCondition.medicines.map((m, i) => (
+                <div key={i} className={styles.medicineCard}>
+                  <div className={styles.medicineCardHeader}>
+                    <span className={styles.medicineType}>{m.type}</span>
+                    <h5>{m.name}</h5>
+                  </div>
+                  <div className={styles.medicineCardMeta}>
+                    <span>Generic: {m.generic}</span>
+                  </div>
+                  <div className={styles.medicineCardDosage}>
+                    <strong>Dosage:</strong> {m.dosage}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.conditionSection}>
+            <h4>Home Remedies</h4>
+            <ul className={styles.remedyList}>
+              {selectedCondition.homeRemedies.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.warningBox}>
+            <h4>⚠ When to See a Doctor</h4>
+            <p>{selectedCondition.whenToSeeDoctor}</p>
+          </div>
+        </div>
+      )}
+
+      {!selectedCondition && searchTab === 'conditions' && (
+        <div className={styles.conditionsList}>
+          {conditions.map(c => (
+            <div key={c.name} className={styles.conditionCard} onClick={() => { setSelectedCondition(c); setQuery(c.name); }}>
+              <span className={styles.conditionCardIcon}>{c.icon}</span>
+              <div className={styles.conditionCardInfo}>
+                <h4>{c.name}</h4>
+                <p>{c.description}</p>
+                <span className={styles.medicineCount}>{c.medicines.length} medicines available</span>
+              </div>
+            </div>
           ))}
         </div>
-      </div>
+      )}
 
-      {!selectedDrug && results.length > 0 && (
+      {searchTab === 'fda' && results.length > 0 && (
         <div className={styles.resultsList}>
-          <div className={styles.resultsHeader}>{results.length} result{results.length !== 1 ? 's' : ''} found</div>
+          <div className={styles.resultsHeader}>{results.length} result{results.length !== 1 ? 's' : ''} found (FDA Database)</div>
           {results.map((drug, i) => (
             <div key={i} className={styles.resultCard} onClick={() => { setSelectedDrug(drug); setExpandedSections(new Set()); }}>
               <div className={styles.resultHeader}>
@@ -204,9 +460,7 @@ export default function MedicineSearch() {
                 {drug.route.length > 0 && <span>💊 {drug.route.join(', ')}</span>}
               </div>
               <p className={styles.resultDesc}>{drug.description.substring(0, 180)}...</p>
-              <div className={styles.resultActions}>
-                <span className={styles.viewMore}>View Full Details →</span>
-              </div>
+              <span className={styles.viewMore}>View Full Details →</span>
             </div>
           ))}
         </div>
@@ -249,116 +503,33 @@ export default function MedicineSearch() {
             </div>
           </div>
 
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('description')}>
-              <h4>Description</h4>
-              <span>{expandedSections.has('description') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('description') && <p>{selectedDrug.description}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('indications')}>
-              <h4>Indications &amp; Usage</h4>
-              <span>{expandedSections.has('indications') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('indications') && <p>{selectedDrug.indications}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('dosage')}>
-              <h4>Dosage &amp; Administration</h4>
-              <span>{expandedSections.has('dosage') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('dosage') && <p>{selectedDrug.dosage_and_administration}</p>}
-          </div>
-
-          <div className={`${styles.detailSection} ${styles.warningBox}`}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('warnings')}>
-              <h4>Warnings</h4>
-              <span>{expandedSections.has('warnings') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('warnings') && <p>{selectedDrug.warnings}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('precautions')}>
-              <h4>Precautions</h4>
-              <span>{expandedSections.has('precautions') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('precautions') && <p>{selectedDrug.precautions}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('adverse')}>
-              <h4>Adverse Reactions / Side Effects</h4>
-              <span>{expandedSections.has('adverse') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('adverse') && <p>{selectedDrug.adverse_reactions}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('interactions')}>
-              <h4>Drug Interactions</h4>
-              <span>{expandedSections.has('interactions') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('interactions') && <p>{selectedDrug.drug_interactions}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('contraindications')}>
-              <h4>Contraindications</h4>
-              <span>{expandedSections.has('contraindications') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('contraindications') && <p>{selectedDrug.contraindications}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('overdosage')}>
-              <h4>Overdosage</h4>
-              <span>{expandedSections.has('overdosage') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('overdosage') && <p>{selectedDrug.overdosage}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('pregnancy')}>
-              <h4>Pregnancy &amp; Nursing</h4>
-              <span>{expandedSections.has('pregnancy') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('pregnancy') && (
-              <>
-                <p><strong>Pregnancy:</strong> {selectedDrug.pregnancy}</p>
-                <p><strong>Nursing:</strong> {selectedDrug.nursing}</p>
-              </>
-            )}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('clinical')}>
-              <h4>Clinical Pharmacology</h4>
-              <span>{expandedSections.has('clinical') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('clinical') && <p>{selectedDrug.clinical_pharmacology}</p>}
-          </div>
-
-          <div className={styles.detailSection}>
-            <button className={styles.sectionToggle} onClick={() => toggleSection('pediatric')}>
-              <h4>Pediatric &amp; Geriatric Use</h4>
-              <span>{expandedSections.has('pediatric') ? '−' : '+'}</span>
-            </button>
-            {expandedSections.has('pediatric') && (
-              <>
-                <p><strong>Pediatric:</strong> {selectedDrug.pediatric_use}</p>
-                <p><strong>Geriatric:</strong> {selectedDrug.geriatric_use}</p>
-              </>
-            )}
-          </div>
+          {[
+            { key: 'description', title: 'Description', content: selectedDrug.description },
+            { key: 'indications', title: 'Indications & Usage', content: selectedDrug.indications },
+            { key: 'dosage', title: 'Dosage & Administration', content: selectedDrug.dosage_and_administration },
+            { key: 'warnings', title: 'Warnings', content: selectedDrug.warnings, warning: true },
+            { key: 'precautions', title: 'Precautions', content: selectedDrug.precautions },
+            { key: 'adverse', title: 'Adverse Reactions / Side Effects', content: selectedDrug.adverse_reactions },
+            { key: 'interactions', title: 'Drug Interactions', content: selectedDrug.drug_interactions },
+            { key: 'contraindications', title: 'Contraindications', content: selectedDrug.contraindications },
+            { key: 'overdosage', title: 'Overdosage', content: selectedDrug.overdosage },
+            { key: 'pregnancy', title: 'Pregnancy & Nursing', content: `Pregnancy: ${selectedDrug.pregnancy}\n\nNursing: ${selectedDrug.nursing}` },
+            { key: 'clinical', title: 'Clinical Pharmacology', content: selectedDrug.clinical_pharmacology },
+            { key: 'pediatric', title: 'Pediatric & Geriatric Use', content: `Pediatric: ${selectedDrug.pediatric_use}\n\nGeriatric: ${selectedDrug.geriatric_use}` },
+          ].map(section => (
+            <div key={section.key} className={`${styles.detailSection} ${section.warning ? styles.warningBox : ''}`}>
+              <button className={styles.sectionToggle} onClick={() => toggleSection(section.key)}>
+                <h4>{section.title}</h4>
+                <span>{expandedSections.has(section.key) ? '−' : '+'}</span>
+              </button>
+              {expandedSections.has(section.key) && <p>{section.content}</p>}
+            </div>
+          ))}
         </div>
       )}
 
       <div className={styles.disclaimer}>
-        Data sourced from openFDA. Not for clinical use. Always consult a qualified doctor before taking any medicine. Indian brand names may vary — verify with your pharmacist.
+        Medicine suggestions are for informational purposes only. Always consult a qualified doctor before taking any medicine. Indian brand names may vary — verify with your pharmacist.
       </div>
     </section>
   );
