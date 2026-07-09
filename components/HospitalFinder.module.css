@@ -1,0 +1,175 @@
+.section { padding: 4rem 0 2rem; }
+.sectionHead { margin-bottom: 1.5rem; }
+.entryNo { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+.h2 { font-family: var(--font-heading); font-size: 1.5rem; margin: 0.4rem 0; color: var(--ink); }
+.sectionHead p { font-size: 0.85rem; color: var(--muted); max-width: 55ch; margin: 0.4rem 0 0; }
+
+.filters { margin-bottom: 1rem; }
+.filterRow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.textInput {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  border-radius: 2px;
+}
+.textInput:focus { outline: 1px solid var(--teal); border-color: var(--teal); }
+.selectInput {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  border-radius: 2px;
+  min-width: 130px;
+}
+.selectInput:focus { outline: 1px solid var(--teal); border-color: var(--teal); }
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.checkboxLabel input[type="checkbox"] { accent-color: var(--teal); }
+
+.statsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.clearBtn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+.clearBtn:hover { border-color: var(--ink); color: var(--ink); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.card {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.card:hover { border-color: var(--teal); }
+.featured { border-color: var(--gold); }
+.featuredBadge {
+  position: absolute;
+  top: -1px;
+  right: 12px;
+  background: var(--gold);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+}
+.card h4 { font-family: var(--font-heading); font-size: 0.95rem; margin: 0 0 0.4rem; }
+.meta { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; }
+.specialty { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); display: block; margin-bottom: 0.4rem; }
+.deptTags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+.deptTag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--border);
+  background: #f8f8f7;
+  color: var(--muted);
+}
+.cardFooter { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.callBtn, .emergencyBtn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+}
+.callBtn:hover { border-color: var(--teal); color: var(--teal); }
+.emergencyBtn { border-color: var(--red); color: var(--red); }
+.emergencyBtn:hover { background: var(--red); color: #fff; }
+
+.featuredSection { margin-bottom: 2rem; }
+.featuredTitle { font-family: var(--font-heading); font-size: 1rem; margin: 0 0 0.8rem; color: var(--ink); }
+.allSection { margin-top: 1.5rem; }
+.sectionTitle { font-family: var(--font-heading); font-size: 1rem; margin: 0 0 0.8rem; color: var(--ink); }
+
+.detailView {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.backBtn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  border: none;
+  color: var(--teal);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+.backBtn:hover { text-decoration: underline; }
+.detailView .featuredBadge {
+  position: static;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.detailName { font-family: var(--font-heading); font-size: 1.3rem; margin: 0.3rem 0 0.8rem; }
+.detailGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.6rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.detailItem { display: flex; flex-direction: column; gap: 0.15rem; }
+.detailLabel { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+
+.contactSection, .addressSection, .deptSection { margin-bottom: 1rem; }
+.contactSection h4, .addressSection h4, .deptSection h4 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+.contactGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; }
+.contactItem { display: flex; flex-direction: column; gap: 0.15rem; }
+.contactLabel { font-size: 0.7rem; color: var(--muted); }
+.contactItem a { font-size: 0.85rem; color: var(--teal); text-decoration: none; }
+.contactItem a:hover { text-decoration: underline; }
+.addressSection p { font-size: 0.85rem; color: var(--ink); margin: 0; line-height: 1.5; }
+.deptGrid { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.disclaimer {
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}

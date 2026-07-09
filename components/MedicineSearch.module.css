@@ -1,0 +1,251 @@
+.section { padding: 4rem 0 2rem; }
+.sectionHead { margin-bottom: 1.5rem; }
+.entryNo { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+.h2 { font-family: var(--font-heading); font-size: 1.5rem; margin: 0.4rem 0; color: var(--ink); }
+.sectionHead p { font-size: 0.85rem; color: var(--muted); max-width: 55ch; margin: 0.4rem 0 0; }
+
+.searchBox {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+.searchBox input {
+  flex: 1;
+  padding: 0.65rem 0.75rem;
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+.searchBox input:focus { outline: none; }
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.65rem 1.2rem;
+  border: none;
+  cursor: pointer;
+}
+.btnPrimary {
+  background: var(--teal);
+  color: #fff;
+}
+.btnPrimary:hover { background: #1a9985; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.error {
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.8rem;
+  background: #fef2f2;
+  border-left: 3px solid var(--red);
+  color: var(--red);
+  font-size: 0.8rem;
+}
+
+.categories {
+  margin-bottom: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+.catLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.catTags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.catTag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.catTag:hover { border-color: var(--teal); }
+.catTagActive {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+
+.categoryDrugs {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+.catDrugsLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+}
+
+.popular {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.popularLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding-top: 0.2rem;
+}
+.popularDrugs { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.popularBtn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.popularBtn:hover { border-color: var(--teal); color: var(--teal); }
+
+.resultsList { margin-top: 1rem; }
+.resultsHeader {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.resultCard {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.resultCard:hover { border-color: var(--teal); }
+.resultHeader { margin-bottom: 0.3rem; }
+.resultHeader h3 { font-family: var(--font-heading); font-size: 1rem; margin: 0; }
+.generic { font-family: var(--font-mono); font-size: 0.7rem; color: var(--teal); text-transform: uppercase; letter-spacing: 0.04em; }
+.resultMeta { display: flex; flex-wrap: wrap; gap: 0.8rem; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; }
+.resultDesc { font-size: 0.8rem; color: var(--muted); margin: 0.4rem 0 0; line-height: 1.5; }
+.resultActions { margin-top: 0.5rem; }
+.viewMore {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+}
+
+.detailCard { border: 1px solid var(--border); padding: 1.5rem; margin-top: 1rem; }
+.backBtn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  border: none;
+  color: var(--teal);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+.backBtn:hover { text-decoration: underline; }
+.detailHeader { margin-bottom: 0.8rem; }
+.detailHeader h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: 0.2rem 0; }
+
+.boxedWarning {
+  padding: 0.6rem 0.8rem;
+  background: #fef2f2;
+  border-left: 3px solid var(--red);
+  color: #7f1d1d;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.detailItem { display: flex; flex-direction: column; gap: 0.15rem; }
+.detailLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.detailItem span:last-child { font-size: 0.85rem; }
+
+.detailSection {
+  border-bottom: 1px solid var(--border);
+}
+.detailSection:last-child { border-bottom: none; }
+.sectionToggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0.6rem 0;
+  cursor: pointer;
+}
+.sectionToggle h4 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+  color: var(--ink);
+  text-align: left;
+}
+.sectionToggle span {
+  font-size: 1rem;
+  color: var(--muted);
+}
+.sectionToggle:hover h4 { color: var(--teal); }
+.detailSection > p {
+  font-size: 0.8rem;
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.6rem;
+  white-space: pre-wrap;
+}
+
+.warningBox {
+  border-left: 3px solid var(--red);
+  padding-left: 0.6rem;
+}
+
+.disclaimer {
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}

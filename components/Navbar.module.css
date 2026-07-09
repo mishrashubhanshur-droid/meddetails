@@ -1,0 +1,135 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.topbarInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+}
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+.brand .mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.brand small {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tabs {
+  display: flex;
+  gap: 2px;
+}
+.tabs a {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding: 8px 12px;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid transparent;
+  border-bottom: none;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.tabs a:hover {
+  color: var(--ink);
+  border-color: var(--rule);
+}
+.navCta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--teal);
+  color: var(--paper);
+  padding: 9px 16px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: 1px solid var(--teal);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.2s;
+}
+@media (max-width: 1024px) {
+  .tabs {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule-strong);
+    flex-direction: column;
+    padding: 12px 32px;
+    gap: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .tabs.open {
+    display: flex;
+  }
+  .tabs a {
+    padding: 12px 16px;
+    border-radius: 3px;
+    border: none;
+    border-bottom: none;
+  }
+  .tabs a:hover {
+    background: var(--paper-2);
+  }
+  .navCta {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+@media (max-width: 600px) {
+  .topbarInner {
+    padding: 14px 20px;
+  }
+  .brand small {
+    display: none;
+  }
+}

@@ -1,0 +1,194 @@
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 72px 32px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.sectionHead p {
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: 0;
+  font-size: 14.5px;
+}
+.entryNo {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--record-red);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  display: block;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.bookingWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .bookingWrap {
+    grid-template-columns: 1fr;
+  }
+}
+.field {
+  margin-bottom: 18px;
+}
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-soft);
+  margin-bottom: 7px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  border: 1px solid var(--rule-strong);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 2px;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+  border-color: var(--teal);
+}
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.slot {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  text-align: center;
+  padding: 9px 4px;
+  border: 1px solid var(--rule-strong);
+  cursor: pointer;
+  background: var(--card);
+}
+.slot:hover {
+  border-color: var(--teal);
+}
+.selected {
+  background: var(--teal);
+  color: var(--paper);
+  border-color: var(--teal);
+}
+.taken {
+  color: var(--rule-strong);
+  text-decoration: line-through;
+  cursor: not-allowed;
+  background: var(--paper-2);
+}
+.ticket {
+  background: var(--card);
+  border: 1px solid var(--rule-strong);
+  position: sticky;
+  top: 96px;
+}
+.ticketHead {
+  padding: 20px 24px;
+  border-bottom: 1px dashed var(--rule-strong);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mark2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--record-red);
+}
+.id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.ticketBody {
+  padding: 20px 24px;
+}
+.ticketRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 13.5px;
+}
+.ticketRow:last-child {
+  border-bottom: none;
+}
+.k {
+  color: var(--ink-soft);
+}
+.v {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-align: right;
+}
+.stamp {
+  margin: 18px 24px 22px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  transform: rotate(-1.5deg);
+}
+.pending {
+  border-color: var(--rule-strong);
+  color: var(--ink-soft);
+}
+.btn {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 13px 22px;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid var(--ink);
+}
+.btnPrimary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btnPrimary:hover {
+  background: var(--teal-deep);
+  border-color: var(--teal-deep);
+}

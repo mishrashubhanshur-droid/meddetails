@@ -1,0 +1,183 @@
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 72px 32px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.sectionHead p {
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: 0;
+  font-size: 14.5px;
+}
+.entryNo {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--record-red);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  display: block;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.rxLookup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.rxLookup input {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  border: 1px solid var(--rule-strong);
+  background: var(--card);
+}
+.rxPad {
+  background: var(--card);
+  border: 1px solid var(--rule-strong);
+  padding: 0;
+  position: relative;
+}
+.rxPadHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 2px solid var(--ink);
+}
+.rxPadLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.rxDoc {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+}
+.patient {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  text-align: right;
+}
+.patient strong {
+  color: var(--ink);
+}
+.rxList {
+  padding: 6px 28px;
+}
+.rxItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.rxItem:last-child {
+  border-bottom: none;
+}
+.rxIdx {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--record-red);
+  padding-top: 3px;
+}
+.rxName {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+.rxDetail {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.rxTags {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.rxTag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border: 1px solid var(--rule-strong);
+  color: var(--ink-soft);
+}
+.rxDose {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: right;
+  white-space: pre-line;
+  color: var(--teal-deep);
+  font-weight: 500;
+}
+.rxPadFoot {
+  padding: 18px 28px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.perforation {
+  height: 14px;
+  background-image: radial-gradient(circle, var(--paper) 3px, transparent 3.5px);
+  background-size: 16px 14px;
+  background-position: 6px 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.btn {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 13px 22px;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid var(--ink);
+}
+.btnPrimary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btnPrimary:hover {
+  background: var(--teal-deep);
+  border-color: var(--teal-deep);
+}
+.btnGhost {
+  background: transparent;
+  color: var(--ink);
+}
+.btnGhost:hover {
+  background: var(--paper-2);
+}
