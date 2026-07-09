@@ -10,7 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "deploy": "vercel --prod",
-    "deploy:preview": "vercel"
+    "deploy:preview": "vercel",
+    "push": "powershell -File deploy.ps1",
+    "push:msg": "powershell -File deploy.ps1"
   },
   "dependencies": {
     "next": "^14.2.0",
